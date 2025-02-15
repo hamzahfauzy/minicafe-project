@@ -3,6 +3,7 @@
 use Core\Database;
 use Core\Page;
 use Core\Request;
+use Core\Session;
 
 $db = new Database;
 $tableName = 'mc_orders';
@@ -15,9 +16,8 @@ $code = $_GET['code'];
 $db->query = "SELECT $tableName.*, mc_customers.name customer_name FROM $tableName LEFT JOIN mc_customers ON mc_customers.id = $tableName.customer_id WHERE $tableName.code = '$code'";
 $order = $db->exec('single');
 
-if(Request::isMethod('POST'))
-{
-    $product = $db->single('mc_products',['id' => $_POST['product']]);
+if (Request::isMethod('POST')) {
+    $product = $db->single('mc_products', ['id' => $_POST['product']]);
     $db->insert('mc_order_items', [
         'order_id' => $order->id,
         'target_id' => $product->target_id,
@@ -25,9 +25,25 @@ if(Request::isMethod('POST'))
         'qty' => $_POST['qty']
     ]);
 
-    set_flash_msg(['success'=>"Pesanan berhasil ditambahkan"]);
+    set_flash_msg(['success' => "Pesanan berhasil ditambahkan"]);
 
-    header('location:'.routeTo('minicafe/orders/detail', ['code' => $_GET['code']]));
+    try {
+
+        $dt = [
+            'cafe' => Session::get('employee')->cafe_id,
+            'target' => $product->target_id,
+            'message' => 'Pesanan baru ' . $product->name . ' sejumlah ' . $_POST['qty'],
+            'url' => routeTo('minicafe/orders/detail', ['code' => $code])
+        ];
+
+        simple_curl('http://localhost:3000/broadcast', 'POST', http_build_query($dt), [
+            'content-type: application/x-www-form-urlencoded'
+        ]);
+    } catch (\Throwable $th) {
+        throw $th;
+    }
+
+    header('location:' . routeTo('minicafe/orders/detail', ['code' => $_GET['code']]));
     die();
 }
 
@@ -55,7 +71,7 @@ $db->query = "SELECT
 $products = $db->exec('all');
 
 // page section
-$title = 'Detail Pesanan '. $_GET['code'];
+$title = 'Detail Pesanan ' . $_GET['code'];
 Page::setActive("minicafe.orders.detail");
 Page::setTitle($title);
 Page::setModuleName($module);
@@ -73,12 +89,12 @@ Page::setBreadcrumbs([
     ]
 ]);
 $app = [
-    'name' => env('APP_CAFE_NAME',''),
-    'address' => env('APP_CAFE_ADDRESS',''),
-    'footer' => env('APP_CAFE_FOOTER',''),
+    'name' => env('APP_CAFE_NAME', ''),
+    'address' => env('APP_CAFE_ADDRESS', ''),
+    'footer' => env('APP_CAFE_FOOTER', ''),
 ];
-Page::pushFoot("<script>window.app = ".json_encode($app)."</script>");
-Page::pushFoot("<script src='".asset('assets/minicafe/js/print.js')."'></script>");
-Page::pushFoot("<script>function printToThermal(){ var order = ".json_encode($order)."; doPrint(order); }</script>");
+Page::pushFoot("<script>window.app = " . json_encode($app) . "</script>");
+Page::pushFoot("<script src='" . asset('assets/minicafe/js/print.js') . "'></script>");
+Page::pushFoot("<script>function printToThermal(){ var order = " . json_encode($order) . "; doPrint(order); }</script>");
 
-return view('minicafe/views/orders/detail', compact('error_msg','success_msg','old','order','products'));
+return view('minicafe/views/orders/detail', compact('error_msg', 'success_msg', 'old', 'order', 'products'));

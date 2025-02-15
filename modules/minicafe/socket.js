@@ -34,8 +34,9 @@ app.get('/', (req, res) => {
 app.post('/broadcast', (req, res) => {
     const body = req.body
     const cafe = body.cafe
+    const target = body.target ?? null
     const message = body.message
-    const subs = subscribers.filter(c => c.cafeId == cafe)
+    const subs = subscribers.filter(c => target ? c.userId == target : c.cafeId == cafe)
     subs.forEach(subscriber => {
         const socket = subscriber.socket
         socket.emit('push notification', {message: body.message, url:body.url})
