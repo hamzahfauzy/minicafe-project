@@ -14,7 +14,11 @@ Notification.requestPermission().then(perm => {
         
             socket.on('push notification', data => {
                 console.log(data)
-                new Notification(data.message)
+                let notif = new Notification(data.message)
+                notif.onclick = (ev) => {
+                    ev.preventDefault()
+                    window.open(data.url)
+                }
             })
         });
     }
