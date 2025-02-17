@@ -14,6 +14,10 @@ return [
             'type' => 'text',
             'label' => 'Alamat'
         ],
+        'invoice_footer_text' => [
+            'type' => 'text',
+            'label' => 'Teks Footer Invoice'
+        ],
         '_userstamp' => true
     ],
     'mc_customers' => [
