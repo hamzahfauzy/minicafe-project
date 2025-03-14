@@ -27,6 +27,12 @@ $attr  = ['class'=>"form-control"];
                             <input type="text" name="mc_orders[table_name]" class="form-control" value="1">
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label class="mb-2 col-4">Catatan</label>
+                        <div class="col-8">
+                            <textarea name="mc_orders[description]" class="form-control"></textarea>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="row mb-3">

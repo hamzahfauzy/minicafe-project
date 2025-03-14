@@ -1,0 +1,1 @@
+ALTER TABLE mc_orders ADD COLUMN description TEXT DEFAULT NULL;
