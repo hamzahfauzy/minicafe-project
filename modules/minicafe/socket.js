@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 
 import { Server } from 'socket.io'
 
-const socketPort = 3000
+const socketPort = 3001
 
 const app = express()
 
