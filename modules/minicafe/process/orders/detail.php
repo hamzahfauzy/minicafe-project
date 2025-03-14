@@ -36,7 +36,7 @@ if (Request::isMethod('POST')) {
             'url' => routeTo('minicafe/orders/detail', ['code' => $code])
         ];
 
-        simple_curl('http://localhost:3000/broadcast', 'POST', http_build_query($dt), [
+        simple_curl(env('SOCKET_URL', 'http://localhost:3000') . '/broadcast', 'POST', http_build_query($dt), [
             'content-type: application/x-www-form-urlencoded'
         ]);
     } catch (\Throwable $th) {

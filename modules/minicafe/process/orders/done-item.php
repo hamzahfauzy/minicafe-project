@@ -26,7 +26,7 @@ try {
         'url' => routeTo('minicafe/orders/detail', ['code' => $order->code])
     ];
     
-    simple_curl('http://localhost:3000/broadcast', 'POST', http_build_query($data), [
+    simple_curl(env('SOCKET_URL', 'http://localhost:3000') . '/broadcast', 'POST', http_build_query($data), [
         'content-type: application/x-www-form-urlencoded'
     ]);
 } catch (\Throwable $th) {

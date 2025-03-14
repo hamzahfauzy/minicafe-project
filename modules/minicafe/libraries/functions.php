@@ -82,3 +82,6 @@ if($auth && in_array(get_role($auth->id)->name, ['Operator','Waiter','Kitchen'])
     Page::pushFoot('<script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>');
     Page::pushFoot('<script src="/assets/minicafe/js/socket.js"></script>');
 }
+
+$socketUrl = env('SOCKET_URL', 'http://localhost:3000');
+Page::pushFoot('<script>window.SOCKET_URL = "'.$socketUrl.'";</script>');

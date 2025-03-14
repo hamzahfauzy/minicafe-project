@@ -4,7 +4,7 @@ console.log('socket.js')
 Notification.requestPermission().then(perm => {
     if(perm == 'granted')
     {
-        const socket = io("http://localhost:3000");
+        const socket = io(window.SOCKET_URL);
         socket.on("connect", () => {
             console.log(socket.id); 
 
