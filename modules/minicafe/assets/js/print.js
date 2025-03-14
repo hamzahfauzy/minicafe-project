@@ -57,6 +57,8 @@ function printContent(order)
                     "[C]--------------------------------\n" +
                     "[C]"+notes+"\n" +
                     "[C]--------------------------------\n" +
+                    "[C] Catatan : "+order.description+"\n" +
+                    "[C]--------------------------------\n" +
                     "[C]"+order.created_at+"\n" +
                     invoiceItems +
                     "[C]"+app.footer

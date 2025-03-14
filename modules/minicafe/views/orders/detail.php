@@ -50,6 +50,12 @@
                         <?=$order->floor_name?>
                     </div>
                 </div>
+                <div class="row mb-3">
+                    <label class="mb-2 col-4">Catatan</label>
+                    <div class="col-8">
+                        <?=$order->description?>
+                    </div>
+                </div>
             </div>
         </div>
 
