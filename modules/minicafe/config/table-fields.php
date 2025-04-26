@@ -84,6 +84,20 @@ return [
         ],
         '_userstamp' => true
     ],
+    'mc_product_prices' => [
+        'product_id' => [
+            'label' => 'Product',
+            'type' => 'options-obj:mc_products,id,name'
+        ],
+        'price' => [
+            'label' => 'Harga',
+            'type' => 'number'
+        ],
+        'status' => [
+            'label' => 'Status',
+            'type' => 'text'
+        ]
+    ],
     'mc_orders' => [
         'cafe_id' => [
             'type' => 'options-obj:mc_cafes,id,name',

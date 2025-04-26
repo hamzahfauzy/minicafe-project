@@ -8,11 +8,16 @@ return [
     'mc_products' => 'Produk',
     'mc_orders' => 'Pesanan',
     'mc_cafes' => 'Cafe',
+    'mc_product_prices' => 'Harga',
     'waiters' => 'Pelayan',
     'kitchens' => 'Dapur',
     'mc_order_items' => 'Antrian',
     'users' => 'Pengguna',
     'operators' => 'Operator',
     'reports' => 'Laporan',
-    'recap' => 'Rekapitulasi'
+    'recap' => 'Rekapitulasi',
+    'prices' => 'Harga',
+    'price' => 'Harga',
+    'activate' => 'Aktifkan',
+    'cashiers' => 'Kasir',
 ];

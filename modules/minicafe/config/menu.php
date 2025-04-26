@@ -10,6 +10,7 @@ return [
             'minicafe.operators',
             'minicafe.waiters',
             'minicafe.kitchens',
+            'minicafe.cashiers',
             'minicafe.mc_categories',
             'minicafe.mc_sections',
             'minicafe.mc_products'
@@ -24,6 +25,11 @@ return [
                 'label' => 'minicafe.menu.operators',
                 'route' => routeTo('minicafe/operators/index'),
                 'activeState' => 'minicafe.operators'
+            ],
+            [
+                'label' => 'minicafe.menu.cashiers',
+                'route' => routeTo('minicafe/cashiers/index'),
+                'activeState' => 'minicafe.cashiers'
             ],
             [
                 'label' => 'minicafe.menu.waiters',

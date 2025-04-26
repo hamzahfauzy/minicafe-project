@@ -9,6 +9,7 @@ return [
     'categories' => 'Kategori',
     'sections' => 'Bagian',
     'cafes' => 'Cafe',
+    'prices' => 'Harga',
     'products' => 'Produk',
     'orders' => 'Pesanan',
     'create_orders' => 'Buat Pesanan',
@@ -18,5 +19,6 @@ return [
     'queues' => 'Antrian',
     'operators' => 'Operator',
     'reports' => 'Laporan',
-    'recap' => 'Rekapitulasi'
+    'recap' => 'Rekapitulasi',
+    'cashiers' => 'Kasir',
 ];
