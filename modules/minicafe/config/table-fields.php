@@ -37,6 +37,7 @@ return [
             'type' => 'text',
             'label' => 'Alamat'
         ],
+        '_userstamp' => true
     ],
     'mc_sections' => [
         'organization_id' => [
@@ -46,7 +47,8 @@ return [
         'name' => [
             'type' => 'text',
             'label' => 'Nama'
-        ]
+        ],
+        '_userstamp' => true
     ],
     'mc_categories' => [
         'organization_id' => [
@@ -61,6 +63,7 @@ return [
             'type' => 'text',
             'label' => 'Nama'
         ],
+        '_userstamp' => true
     ],
     'mc_products' => [
         'cafe_id' => [
@@ -79,6 +82,7 @@ return [
             'type' => 'text',
             'label' => 'Nama'
         ],
+        '_userstamp' => true
     ],
     'mc_orders' => [
         'cafe_id' => [
@@ -97,6 +101,7 @@ return [
             'type' => 'text',
             'label' => 'Status'
         ],
+        '_userstamp' => true
     ],
     'mc_order_items' => [
         'code' => [
@@ -133,6 +138,7 @@ return [
         'status' => [
             'type' => 'text',
             'label' => 'Status'
-        ]
+        ],
+        '_userstamp' => true
     ]
 ];
