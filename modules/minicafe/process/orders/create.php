@@ -57,11 +57,7 @@ if (Request::isMethod('POST')) {
     die();
 }
 
-$db->query = "SELECT COUNT(*) as `counter` FROM mc_orders WHERE created_at LIKE '%" . date('Y-m') . "%' AND cafe_id = $cafe_id";
-$counter = $db->exec('single')?->counter ?? 0;
-
-$counter = sprintf("%05d", $counter + 1);
-$code    = 'INV' . date('Ym') . $counter;
+$code    = '#' . time() . '-' .rand(1111, 9999);
 
 $employee = Session::get('employee');
 
