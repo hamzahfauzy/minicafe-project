@@ -12,6 +12,5 @@ $db->update('mc_orders', [
 ]);
 
 set_flash_msg(['success' => "Pesanan berhasil dicancel"]);
-
-header('location:' . routeTo('crud/index', ['table' => 'mc_orders']));
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 die();

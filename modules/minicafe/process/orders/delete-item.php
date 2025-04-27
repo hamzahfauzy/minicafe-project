@@ -9,5 +9,5 @@ $db->delete('mc_order_items', [
 ]);
 set_flash_msg(['success' => "Item berhasil dihapus"]);
 
-header('location:' . routeTo('minicafe/orders/detail', ['code' => $_GET['code']]));
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 die();

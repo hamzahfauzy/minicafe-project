@@ -9,7 +9,9 @@
         <p class="h4 m-0"><?php get_title() ?></p>
 
         <div class="right-button ms-auto">
-            <a href="<?= routeTo('minicafe/orders/cancel-order', ['code' => $_GET['code']]) ?>" class="btn btn-danger btn-sm"><i class="fas fa-cancel"></i> Cancel</a>
+            <?php if ($order->status != "CANCEL"): ?>
+                <a href="<?= routeTo('minicafe/orders/cancel-order', ['code' => $_GET['code']]) ?>" class="btn btn-danger btn-sm"><i class="fas fa-cancel"></i> Cancel</a>
+            <?php endif ?>
             <button class="btn btn-warning btn-sm" onclick="printToThermal()"><i class="fas fa-print"></i> Cetak</button>
         </div>
     </div>
@@ -75,7 +77,11 @@
                         <th>Harga</th>
                         <th>Total</th>
                         <th>Status</th>
-                        <th><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Tambah Item</button></th>
+                        <?php if ($order->status != "CANCEL"): ?>
+                            <th>
+                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">Tambah Item</button>
+                            </th>
+                        <?php endif ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,7 +94,11 @@
                             <td>Rp. <?= number_format($item->price) ?></td>
                             <td>Rp. <?= number_format($item->total) ?></td>
                             <td><?= $item->status ?></td>
-                            <td><a href="<?= routeTo('minicafe/orders/delete-item', ['id' => $item->id, 'code' => $_GET['code']]) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>
+                            <?php if ($order->status != "CANCEL"): ?>
+                                <td>
+                                    <a href="<?= routeTo('minicafe/orders/delete-item', ['id' => $item->id, 'code' => $_GET['code']]) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                </td>
+                            <?php endif ?>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
