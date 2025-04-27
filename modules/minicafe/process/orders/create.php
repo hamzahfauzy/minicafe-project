@@ -57,7 +57,7 @@ if (Request::isMethod('POST')) {
     die();
 }
 
-$code    = '#' . time() . '-' . rand(1111, 9999);
+$code    = time() . '-' . rand(1111, 9999);
 
 $employee = Session::get('employee');
 
