@@ -18,12 +18,28 @@ $order = $db->exec('single');
 
 if (Request::isMethod('POST')) {
     $product = $db->single('mc_products', ['id' => $_POST['product']]);
-    $db->insert('mc_order_items', [
-        'order_id' => $order->id,
-        'target_id' => $product->target_id,
-        'product_id' => $product->id,
-        'qty' => $_POST['qty']
-    ]);
+    $price = $db->single('mc_product_prices', ['product_id' => $product->id, 'status' => 'ACTIVE']);
+
+    $ord = $db->single('mc_orders', ['code' => $_POST['order']]);
+
+    $item = $db->single('mc_order_items', ['product_id' => $product->id, 'order_id' => $order->id]);
+
+    if ($item) {
+        $newQty = $item->qty + $_POST['qty'];
+        $db->update('mc_order_items', [
+            'qty' => $newQty,
+            'total' => ($price->price * $newQty),
+        ], ['id' => $item->id]);
+    } else {
+        $db->insert('mc_order_items', [
+            'order_id' => $order->id,
+            'target_id' => $product->target_id,
+            'product_id' => $product->id,
+            'qty' => $_POST['qty'],
+            'price' => $price->price,
+            'total' => $price->price * $_POST['qty'],
+        ]);
+    }
 
     set_flash_msg(['success' => "Pesanan berhasil ditambahkan"]);
 
