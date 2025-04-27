@@ -24,7 +24,7 @@ if (Request::isMethod('POST')) {
         $data['customer_id'] = $customer->id;
     }
     $items = $_POST['items'];
-    if(empty($data['description'])) unset($data['description']);
+    if (empty($data['description'])) unset($data['description']);
     $data['cafe_id'] = $cafe_id;
     $data['total_items'] = count($items);
     $data['total_qty'] = array_sum(array_column($items, 'qty'));
@@ -57,7 +57,7 @@ if (Request::isMethod('POST')) {
     die();
 }
 
-$code    = '#' . time() . '-' .rand(1111, 9999);
+$code    = time() . '-' . rand(1111, 9999);
 
 $employee = Session::get('employee');
 
