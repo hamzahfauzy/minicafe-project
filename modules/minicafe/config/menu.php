@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     [
@@ -18,7 +18,7 @@ return [
         'items' => [
             [
                 'label' => 'minicafe.menu.cafes',
-                'route' => routeTo('crud/index',['table'=>'mc_cafes']),
+                'route' => routeTo('crud/index', ['table' => 'mc_cafes']),
                 'activeState' => 'minicafe.mc_cafes'
             ],
             [
@@ -43,22 +43,22 @@ return [
             ],
             [
                 'label' => 'minicafe.menu.customers',
-                'route' => routeTo('crud/index',['table' => 'mc_customers']),
+                'route' => routeTo('crud/index', ['table' => 'mc_customers']),
                 'activeState' => 'minicafe.mc_customers'
             ],
             [
                 'label' => 'minicafe.menu.sections',
-                'route' => routeTo('crud/index',['table' => 'mc_sections']),
+                'route' => routeTo('crud/index', ['table' => 'mc_sections']),
                 'activeState' => 'minicafe.mc_sections'
             ],
             [
                 'label' => 'minicafe.menu.categories',
-                'route' => routeTo('crud/index',['table' => 'mc_categories']),
+                'route' => routeTo('crud/index', ['table' => 'mc_categories']),
                 'activeState' => 'minicafe.mc_categories'
             ],
             [
                 'label' => 'minicafe.menu.products',
-                'route' => routeTo('crud/index',['table' => 'mc_products']),
+                'route' => routeTo('crud/index', ['table' => 'mc_products']),
                 'activeState' => 'minicafe.mc_products'
             ],
         ]
@@ -80,25 +80,33 @@ return [
             ],
             [
                 'label' => 'minicafe.menu.all_orders',
-                'route' => routeTo('crud/index',['table' => 'mc_orders']),
+                'route' => routeTo('crud/index', ['table' => 'mc_orders']),
                 'activeState' => 'minicafe.mc_orders'
             ],
             [
                 'label' => 'minicafe.menu.new_orders',
-                'route' => routeTo('crud/index',['table' => 'mc_orders', 'filter' => ['status' => 'NEW']]),
+                'route' => routeTo('crud/index', ['table' => 'mc_orders', 'filter' => ['status' => 'NEW']]),
                 'activeState' => 'minicafe.new_orders'
             ],
             [
                 'label' => 'minicafe.menu.finish_orders',
-                'route' => routeTo('crud/index',['table' => 'mc_orders', 'filter' => ['status' => 'FINISH']]),
+                'route' => routeTo('crud/index', ['table' => 'mc_orders', 'filter' => ['status' => 'FINISH']]),
                 'activeState' => 'minicafe.finish_orders'
             ],
         ]
     ],
     [
+        'label' => 'minicafe.menu.payments',
+        'icon'  => 'fa-fw fa-lg me-2 fa-solid fa-cash-register',
+        'route' => routeTo('crud/index', ['table' => 'mc_payments']),
+        'activeState' => [
+            'minicafe.mc_payments',
+        ],
+    ],
+    [
         'label' => 'minicafe.menu.queues',
         'icon'  => 'fa-fw fa-lg me-2 fa-solid fa-stream',
-        'route' => routeTo('crud/index',['table'=>'mc_order_items']),
+        'route' => routeTo('crud/index', ['table' => 'mc_order_items']),
         'activeState' => [
             'minicafe.mc_order_items',
         ],

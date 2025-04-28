@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'mc_cafes' => [
@@ -154,5 +154,32 @@ return [
             'label' => 'Status'
         ],
         '_userstamp' => true
-    ]
+    ],
+    'mc_payments' => [
+        'cafe_id' => [
+            'type' => 'options-obj:mc_cafes,id,name',
+            'label' => 'Cafe'
+        ],
+        'order_id' => [
+            'type' => 'options-obj:mc_orders,id,code',
+            'label' => 'Order'
+        ],
+        'total_order' => [
+            'type' => 'text',
+            'label' => 'Total Order'
+        ],
+        'total_discount' => [
+            'type' => 'text',
+            'label' => 'Total diskon'
+        ],
+        'total_final' => [
+            'type' => 'text',
+            'label' => 'Total final'
+        ],
+        'total_payment' => [
+            'type' => 'text',
+            'label' => 'Total payment'
+        ],
+        '_userstamp' => true
+    ],
 ];

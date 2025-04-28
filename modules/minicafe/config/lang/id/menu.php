@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'module_name' => 'Manajemen',
@@ -21,4 +21,5 @@ return [
     'reports' => 'Laporan',
     'recap' => 'Rekapitulasi',
     'cashiers' => 'Kasir',
+    'payments' => 'Pembayaran',
 ];

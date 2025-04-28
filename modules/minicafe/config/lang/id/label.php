@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'module_name' => 'Manajemen',
@@ -9,6 +9,7 @@ return [
     'mc_orders' => 'Pesanan',
     'mc_cafes' => 'Cafe',
     'mc_product_prices' => 'Harga',
+    'mc_payments' => 'Pembayaran',
     'waiters' => 'Pelayan',
     'kitchens' => 'Dapur',
     'mc_order_items' => 'Antrian',
